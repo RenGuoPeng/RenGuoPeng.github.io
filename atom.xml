@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.520wx.top</id>
+    <title>Gridea</title>
+    <updated>2023-03-10T03:04:21.851Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.520wx.top"/>
+    <link rel="self" href="https://blog.520wx.top/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://blog.520wx.top/images/avatar.png</logo>
+    <icon>https://blog.520wx.top/favicon.ico</icon>
+    <rights>All rights reserved 2023, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[2023年搭建博客Gridea+Github+cloudflare+Valine评论]]></title>
+        <id>https://blog.520wx.top/post/2023-nian-da-jian-bo-ke-grideagithubvaline-ping-lun/</id>
+        <link href="https://blog.520wx.top/post/2023-nian-da-jian-bo-ke-grideagithubvaline-ping-lun/">
+        </link>
+        <updated>2023-03-10T01:53:41.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="搭建原因">搭建原因</h1>
+<p>一直都想搭建一个属于自己的博客系统。因为平时自己也喜欢折腾很多项目，踩过不少坑。<br>
+年纪轻轻记性也是逐年下降，是要把知识存储在一个地方了。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="搭建原因">搭建原因</h1>
+<p>一直都想搭建一个属于自己的博客系统。因为平时自己也喜欢折腾很多项目，踩过不少坑。<br>
+年纪轻轻记性也是逐年下降，是要把知识存储在一个地方了。</p>
+<!-- more -->
+<h1 id="关于此篇文章">关于此篇文章</h1>
+<p>系统是当天搭建文章是次日完成<br>
+属于是趁热打铁了<br>
+一些简单的注册步骤不再记录<br>
+主要讲一些容易出错的地方</p>
+<h1 id="目录">目录</h1>
+<ul>
+<li><a href="#github">Github</a></li>
+<li><a href="#gridea">Gridea</a></li>
+<li><a href="#cloudflare">cloudflare</a></li>
+<li><a href="#valine%E8%AF%84%E8%AE%BA">Valine评论</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+<h1 id="github">Github</h1>
+<ol>
+<li>登录 GitHub 之后<br>
+点击<a href="https://github.com/settings/tokens/new"><strong>创建令牌</strong></a><br>
+如下图所示，勾选repo即可。<br>
+<img src="https://blog.520wx.top/post-images/1678407294522.png" alt="" loading="lazy"></li>
+<li>创建一个公开的仓库<br>
+点击setting设置好名称，如下图<br>
+<img src="https://blog.520wx.top/post-images/1678407715363.png" alt="" loading="lazy"><br>
+之后设置pages</li>
+</ol>
+<ul>
+<li>Custom domain：自己的域名<br>
+<img src="https://blog.520wx.top/post-images/1678407842829.png" alt="" loading="lazy"></li>
+</ul>
+<h1 id="gridea">Gridea</h1>
+<ol>
+<li>官网下载windows系统下的安装包<br>
+<a href="https://open.gridea.dev/"><strong>Gridea官网</strong></a><br>
+<a href="https://git-scm.com/downloads"><strong>Git下载</strong></a><br>
+Git安装后的验证方式<br>
+<img src="https://blog.520wx.top/post-images/1678352485572.png" alt="" loading="lazy"></li>
+<li>安装后打开Gridea<br>
+<img src="https://blog.520wx.top/post-images/1678352836040.png" alt="" loading="lazy"><br>
+如图所示</li>
+</ol>
+<ul>
+<li>域名：之后将使用自定义域名，所以不设置成github的地址</li>
+<li>仓库名称：你的<code>**用户名**</code>+<strong>github.io</strong></li>
+<li>分支：main</li>
+<li>仓库用户名：你的<code>**用户名**</code></li>
+<li>邮箱：你的github账号的邮箱</li>
+<li>令牌：Github上的token</li>
+</ul>
+<ol start="3">
+<li>检测远程连接</li>
+</ol>
+<ul>
+<li><strong>必须设置代理！我因为没有设置代理，检测远程连接总是失败！</strong></li>
+<li><strong>如果偶尔突然一次的检测成功但是没办法同步成功应该是bug</strong></li>
+</ul>
+<ol start="4">
+<li>同步</li>
+</ol>
+<ul>
+<li>开了代理之后，同步一次搞定</li>
+</ul>
+<h1 id="cloudflare">cloudflare</h1>
+<p>我的cloudflare是经过设置的，所以我直接设置dns即可<br>
+后面会出cloudflare的设置教程，网上大部分都是cloudflare老版的设置，我也是看了很多教程</p>
+<ol>
+<li>进入cloudflare找到dns，添加一条CNAME记录，目标我用了blog为我的二级域名，记录是GIthub的仓库地址。<br>
+如下图所示<br>
+<img src="https://blog.520wx.top/post-images/1678408293185.png" alt="" loading="lazy"></li>
+</ol>
+<h1 id="valine评论">Valine评论</h1>
+<ol>
+<li>注册Valine<br>
+<a href="https://console.leancloud.cn/"><strong>Valine官网</strong></a></li>
+<li>获取key和id<br>
+设置-应用凭证-保留<strong>AppID</strong>和<strong>AppKey</strong><br>
+<img src="https://blog.520wx.top/post-images/1678410707425.png" alt="" loading="lazy"></li>
+<li>在主题里添加上如下代码</li>
+</ol>
+<ul>
+<li>我使用的主题是：<a href="https://github.com/qyxtim/bitcron-pro"><strong>bitcron-pro</strong></a></li>
+<li>下载之后解压到<code>themes</code>目录下，<strong>注意文件嵌套</strong></li>
+<li>修改主题文件<code>_blocks</code>下的<code>gitalk.ejs</code>文件，将内容删除，添加以下代码</li>
+</ul>
+<pre><code class="language-Html">    &lt;!--评论显示区，请插入合适的位置--&gt;
+    &lt;div id=&quot;comment&quot;&gt;&lt;/div&gt;
+    &lt;!--Leancloud 操作库:--&gt;
+    &lt;script src=&quot;//cdn1.lncld.net/static/js/3.6.1/av-min.js&quot;&gt;&lt;/script&gt;
+    &lt;!--Valine 的核心代码库--&gt;
+    &lt;script src=&quot;//cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        new Valine({
+            el:'#comment',
+            appId: 'AppID',
+            appKey: 'AppKey',
+            placeholder: 'ヾﾉ≧∀≦)o快来评论一下吧!',
+            avatar:''
+        });
+    &lt;/script&gt;
+</code></pre>
+<ol start="4">
+<li>打开Gridea的评论<br>
+<img src="https://blog.520wx.top/post-images/1678412322657.png" alt="" loading="lazy"></li>
+</ol>
+<h1 id="总结">总结</h1>
+<ul>
+<li>一套流程下来也折腾了快一天时间，主要是Gridea的官方上手教程不太详细，网上的教程又太古老</li>
+<li>可以把Gridea的保存路径存放在onedriver的同步文件夹，可以多设备同步</li>
+<li><code>重点</code>如果设置自定义域名出现问题，比如<strong>样式加载不出来</strong>，官方给的回答是http和https不匹配的原因，在我实际操作中发现应该是域名那里填写自己的域名而不是像官方教程里写的填写github的仓库地址，因为你写仓库地址而github已经使用了你的域名，所以样式和图片都无法读取到。这里至少卡了我2个小时。</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://blog.520wx.top/post/hello-gridea/</id>
+        <link href="https://blog.520wx.top/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="https://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>

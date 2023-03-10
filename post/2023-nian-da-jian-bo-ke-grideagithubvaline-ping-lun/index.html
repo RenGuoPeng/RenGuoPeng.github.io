@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="https://blog.520wx.top/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="温故而知新"><meta charset="UTF-8"><title>2023年搭建博客Gridea+Github+cloudflare+Valine评论 | Gridea</title>
+<link href="https://blog.520wx.top/styles/main.css" type="text/css" rel="stylesheet" /><link href="https://at.alicdn.com/t/font_1621793_zatzzgvf30g.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css"><script async src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script><script src="https://blog.520wx.top/media/js/magnify.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+<script type="text/javascript">function btn_toggle(){document.getElementById("hn").classList.contains("no-js")?document.getElementById("hn").classList.remove("no-js"):document.getElementById("hn").classList.add("no-js")}</script>
+
+<link rel="canonical" href="https://blog.520wx.top/post/2023-nian-da-jian-bo-ke-grideagithubvaline-ping-lun/" />
+</head>
+<body>
+<div class="progress"></div><style>.progress{background:linear-gradient(to right,#87ceeb var(--scroll),transparent 0);background-repeat:no-repeat;position:fixed;width:100%;height:4px;z-index:1}</style><div class="darkmode-background"></div><div class="darkmode-layer"></div>
+<noscript><p class="warn" >本页面需要浏览器支持（启用）JavaScript</p></noscript><div class="header"><div class="logo_title"><div class="title animated fadeInDown"><a href="https://blog.520wx.top"><img alt="logo" style="display:inline-block;" src="https://blog.520wx.top/images/avatar.png"/></a><h1 title="Gridea" class="weaklink"><a  href="/">Gridea</a></h1>
+
+<style>.santa-body{float:left;margin:10.5px 7.5px 0px 0px;font-size:20px;color:#f91047;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;width:1em;height:1em;background-color:currentColor;-webkit-box-shadow:inset 0 -0.25em rgba(0,0,0,0.1);box-shadow:inset 0 -0.25em rgba(0,0,0,0.1);border-radius:50%;-webkit-transform-origin:center bottom;-ms-transform-origin:center bottom;transform-origin:center bottom;-webkit-animation:balance alternate infinite 2s ease-in-out;animation:balance alternate infinite 2s ease-in-out;}.santa-head{font-size:.4em;width:1em;height:1.9em;background-color:white;border-radius:.5em;-webkit-transform:translateY(-1em);-ms-transform:translateY(-1em);transform:translateY(-1em);position:relative;}.santa-head::before{content:'';width:1em;height:.375em;display:block;background-color:#ff9876;position:absolute;left:0;top:.65em;}.santa-ear{background-color:#fc8363;width:.1em;height:.3em;position:absolute;top:.75em;}.santa-ear:nth-of-type(1){border-radius:.05em 0 0 .05em;left:-0.1em;}.santa-ear:nth-of-type(2){border-radius:0 .05em .05em 0;right:-0.1em;}.santa-hat{content:'';width:1em;height:.15em;position:absolute;-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1);top:.5em;left:0;background-color:white;}.santa-hat::before{content:'';display:block;width:1em;height:.5em;background:#f91047;border-radius:.5em .5em 0 0;z-index:2;position:absolute;top:-0.5em;}.santa-hat::after{content:'';width:.25em;height:.25em;display:block;background-color:white;border-radius:50%;position:absolute;z-index:0;top:-0.72em;right:0;-webkit-box-shadow:-0.2em .2em 0 .12em rgba(0,0,0,0.2),-0.2em .2em 0 .12em #f91047;box-shadow:-0.2em .2em 0 .12em rgba(0,0,0,0.2),-0.2em .2em 0 .12em #f91047;}.santa-eye{width:.12em;height:.12em;background-color:black;border-radius:50%;position:absolute;top:.76em;left:.2em;}.santa-eye + .santa-eye{left:auto;right:.2em;}.santa-nose{width:.12em;height:.22em;background-color:#f24c4c;border-radius:0 0 .12em .12em;position:absolute;top:.84em;left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);}.santa-mouth{width:.18em;height:.1em;border-bottom-right-radius:5vw;border-bottom-left-radius:5vw;margin-top:.3em;background-color:black;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-animation:hohoho 4s linear forwards infinite;animation:hohoho 4s linear forwards infinite;}@-webkit-keyframes hohoho{0%,10%,20%,40%,100%{width:.18em;height:.1em;border-bottom-right-radius:1vw;border-bottom-left-radius:1vw;}5%,15%,25%,35%{width:.15em;height:.2em;border-radius:50%;}}@keyframes hohoho{0%,10%,20%,40%,100%{width:.18em;height:.1em;border-bottom-right-radius:1vw;border-bottom-left-radius:1vw;}5%,15%,25%,35%{width:.15em;height:.2em;border-radius:50%;}}@-webkit-keyframes balance{from{-webkit-transform:rotate(-4deg);transform:rotate(-4deg);}to{-webkit-transform:rotate(4deg);transform:rotate(4deg);}}@keyframes balance{from{-webkit-transform:rotate(-4deg);transform:rotate(-4deg);}to{-webkit-transform:rotate(4deg);transform:rotate(4deg);}}</style>
+<div class="santa"><div class="santa-body"><div class="santa-head"><div class="santa-ear"></div><div class="santa-ear"></div><div class="santa-hat"></div><div class="santa-eye"></div><div class="santa-eye"></div><div class="santa-nose"></div><div class="santa-mouth"></div></div></div></div>
+
+<div class="navbar weaklink">
+<div class="normal_nav">
+<div class="bitcron_nav_container"><div class="bitcron_nav"><div class="bitcron_nav"><div style="display:flex;justify-content:center;"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a></li></ul></nav>
+<div style="float:right;margin-top:1em"><form id="gridea-search-form" data-update="1578893743252" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="Search..."></form></div><div style="margin-left:0.5em;margin-top:1.2em"><input id="switch_default" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+<div class="clear clear_nav_inline_end"></div></div></div><div class="clear clear_nav_end"></div></div></div><div class="hamberger" href="javascript:void(0)" onclick="btn_toggle();"><i class="iconfont icon-category"></i></div></div></div></div>
+<div id="hn" class="no-js hidden_nav animated fadeInDown"><div class="bitcron_nav_container"><div class="bitcron_nav"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/about" class="selected active current nav__item" >关于</a></li></ul><div class="clear clear_nav_inline_end"></div></nav></div><div class="clear clear_nav_end"></div></div>
+<div style="display:flex;justify-content:center;inline-block;text-align:center;margin-top:7%"><div><form id="gridea-search-form" data-update="1678417444913" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q"  placeholder="Search..." /></form></div><div style="margin-left:0.5em"><input id="switch_default_h" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+</div></div>
+<script>function enableDarkmode(){document.body.classList.add("darkmode"),document.getElementById("switch_default").checked=1,document.getElementById("switch_default_h").checked=1}function removeDarkmode(){document.body.classList.remove("darkmode"),document.getElementById("switch_default").checked=0,document.getElementById("switch_default_h").checked=0}function getCookie(a){var b,c=new RegExp("(^| )"+a+"=([^;]*)(;|$)");return(b=document.cookie.match(c))?unescape(b[2]):null}cookie=getCookie("darkmode"),"enable"==cookie&&enableDarkmode(),window.matchMedia("(prefers-color-scheme: dark)").matches&&"disable"!==cookie&&(enableDarkmode(),document.cookie="darkmode=enable; path=/");var mobileBtn=function(){1==document.getElementById("switch_default").checked?(enableDarkmode(),document.cookie="darkmode=enable; path=/"):(removeDarkmode(),document.cookie="darkmode=disable; path=/")};</script>
+
+<style>.deng-box{position:fixed;top:-40px;left:-80px;z-index:9999}.deng-box1{position:fixed;top:-30px;left:-80px;z-index:9999}.deng-box1 .deng{position:relative;width:120px;height:90px;margin:50px;background:#d8000f;background:rgba(216,0,15,0.8);border-radius:50% 50%;-webkit-transform-origin:50% -100px;-webkit-animation:swing 5s infinite ease-in-out;box-shadow:-5px 5px 30px 4px rgba(252,144,61,1)}.deng{position:relative;width:120px;height:90px;margin:50px;background:#d8000f;background:rgba(216,0,15,0.8);border-radius:50% 50%;-webkit-transform-origin:50% -100px;-webkit-animation:swing 3s infinite ease-in-out;box-shadow:-5px 5px 50px 4px rgba(250,108,0,1)}.deng-a{width:100px;height:90px;background:#d8000f;background:rgba(216,0,15,0.1);margin:12px 8px 8px 8px;border-radius:50% 50%;border:2px solid #dc8f03}.deng-b{width:45px;height:90px;background:#d8000f;background:rgba(216,0,15,0.1);margin:-4px 8px 8px 26px;border-radius:50% 50%;border:2px solid #dc8f03}.xian{position:absolute;top:-20px;left:60px;width:2px;height:20px;background:#dc8f03}.shui-a{position:relative;width:5px;height:20px;margin:-5px 0 0 59px;-webkit-animation:swing 4s infinite ease-in-out;-webkit-transform-origin:50% -45px;background:#ffa500;border-radius:0 0 5px 5px}.shui-b{position:absolute;top:14px;left:-2px;width:10px;height:10px;background:#dc8f03;border-radius:50%}.shui-c{position:absolute;top:18px;left:-2px;width:10px;height:35px;background:#ffa500;border-radius:0 0 0 5px}.deng:before{position:absolute;top:-7px;left:29px;height:12px;width:60px;content:" ";display:block;z-index:999;border-radius:5px 5px 0 0;border:solid 1px #dc8f03;background:#ffa500;background:linear-gradient(to right,#dc8f03,#ffa500,#dc8f03,#ffa500,#dc8f03)}.deng:after{position:absolute;bottom:-7px;left:10px;height:12px;width:60px;content:" ";display:block;margin-left:20px;border-radius:0 0 5px 5px;border:solid 1px #dc8f03;background:#ffa500;background:linear-gradient(to right,#dc8f03,#ffa500,#dc8f03,#ffa500,#dc8f03)}.deng-t{font-family:华文行楷,Arial,Lucida Grande,Tahoma,sans-serif;color:#dc8f03;font-weight:bold;line-height:85px;text-align:center}.night .deng-t,.night .deng-box,.night .deng-box1{background:transparent !important}@-moz-keyframes swing{0%{-moz-transform:rotate(-10deg)}50%{-moz-transform:rotate(10deg)}100%{-moz-transform:rotate(-10deg)}}@-webkit-keyframes swing{0%{-webkit-transform:rotate(-10deg)}50%{-webkit-transform:rotate(10deg)}100%{-webkit-transform:rotate(-10deg)}}</style>
+<div class="deng-box"><div class="deng"><div class="xian"></div><div class="deng-a"><div class="deng-b"><div class="deng-t">节</div></div></div><div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div></div></div> <div class="deng-box1"><div class="deng"><div class="xian"></div><div class="deng-a"><div class="deng-b"><div class="deng-t">春节</div></div></div><div class="shui shui-a"><div class="shui-c"></div><div class="shui-b"></div></div></div></div>
+
+<div class="main"><div class="main-inner"><div class="content">
+<article class="post">
+<h2 class="post_title sm_margin"><a>2023年搭建博客Gridea+Github+cloudflare+Valine评论</a></h2>
+<script>function lan(){if(document.getElementById("lan").innerText=="繁"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_tw.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="简"}else{if(document.getElementById("lan").innerText=="簡"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="繁"}}};</script>
+<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2023-03-10</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://blog.520wx.top/tag/Z8t-cThJl/" class="tag">搭建系统</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">828字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">4 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
+</section>
+
+<div style="display:flex">
+<div class="md_block" id="md_block">
+<div class="round-shape-one"></div>
+<h1 id="搭建原因">搭建原因</h1>
+<p>一直都想搭建一个属于自己的博客系统。因为平时自己也喜欢折腾很多项目，踩过不少坑。<br>
+年纪轻轻记性也是逐年下降，是要把知识存储在一个地方了。</p>
+<!-- more -->
+<h1 id="关于此篇文章">关于此篇文章</h1>
+<p>系统是当天搭建文章是次日完成<br>
+属于是趁热打铁了<br>
+一些简单的注册步骤不再记录<br>
+主要讲一些容易出错的地方</p>
+<h1 id="目录">目录</h1>
+<ul>
+<li><a href="#github">Github</a></li>
+<li><a href="#gridea">Gridea</a></li>
+<li><a href="#cloudflare">cloudflare</a></li>
+<li><a href="#valine%E8%AF%84%E8%AE%BA">Valine评论</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+<h1 id="github">Github</h1>
+<ol>
+<li>登录 GitHub 之后<br>
+点击<a href="https://github.com/settings/tokens/new"><strong>创建令牌</strong></a><br>
+如下图所示，勾选repo即可。<br>
+<img src="https://blog.520wx.top/post-images/1678407294522.png" alt="" loading="lazy"></li>
+<li>创建一个公开的仓库<br>
+点击setting设置好名称，如下图<br>
+<img src="https://blog.520wx.top/post-images/1678407715363.png" alt="" loading="lazy"><br>
+之后设置pages</li>
+</ol>
+<ul>
+<li>Custom domain：自己的域名<br>
+<img src="https://blog.520wx.top/post-images/1678407842829.png" alt="" loading="lazy"></li>
+</ul>
+<h1 id="gridea">Gridea</h1>
+<ol>
+<li>官网下载windows系统下的安装包<br>
+<a href="https://open.gridea.dev/"><strong>Gridea官网</strong></a><br>
+<a href="https://git-scm.com/downloads"><strong>Git下载</strong></a><br>
+Git安装后的验证方式<br>
+<img src="https://blog.520wx.top/post-images/1678352485572.png" alt="" loading="lazy"></li>
+<li>安装后打开Gridea<br>
+<img src="https://blog.520wx.top/post-images/1678352836040.png" alt="" loading="lazy"><br>
+如图所示</li>
+</ol>
+<ul>
+<li>域名：之后将使用自定义域名，所以不设置成github的地址</li>
+<li>仓库名称：你的<code>**用户名**</code>+<strong>github.io</strong></li>
+<li>分支：main</li>
+<li>仓库用户名：你的<code>**用户名**</code></li>
+<li>邮箱：你的github账号的邮箱</li>
+<li>令牌：Github上的token</li>
+</ul>
+<ol start="3">
+<li>检测远程连接</li>
+</ol>
+<ul>
+<li><strong>必须设置代理！我因为没有设置代理，检测远程连接总是失败！</strong></li>
+<li><strong>如果偶尔突然一次的检测成功但是没办法同步成功应该是bug</strong></li>
+</ul>
+<ol start="4">
+<li>同步</li>
+</ol>
+<ul>
+<li>开了代理之后，同步一次搞定</li>
+</ul>
+<h1 id="cloudflare">cloudflare</h1>
+<p>我的cloudflare是经过设置的，所以我直接设置dns即可<br>
+后面会出cloudflare的设置教程，网上大部分都是cloudflare老版的设置，我也是看了很多教程</p>
+<ol>
+<li>进入cloudflare找到dns，添加一条CNAME记录，目标我用了blog为我的二级域名，记录是GIthub的仓库地址。<br>
+如下图所示<br>
+<img src="https://blog.520wx.top/post-images/1678408293185.png" alt="" loading="lazy"></li>
+</ol>
+<h1 id="valine评论">Valine评论</h1>
+<ol>
+<li>注册Valine<br>
+<a href="https://console.leancloud.cn/"><strong>Valine官网</strong></a></li>
+<li>获取key和id<br>
+设置-应用凭证-保留<strong>AppID</strong>和<strong>AppKey</strong><br>
+<img src="https://blog.520wx.top/post-images/1678410707425.png" alt="" loading="lazy"></li>
+<li>在主题里添加上如下代码</li>
+</ol>
+<ul>
+<li>我使用的主题是：<a href="https://github.com/qyxtim/bitcron-pro"><strong>bitcron-pro</strong></a></li>
+<li>下载之后解压到<code>themes</code>目录下，<strong>注意文件嵌套</strong></li>
+<li>修改主题文件<code>_blocks</code>下的<code>gitalk.ejs</code>文件，将内容删除，添加以下代码</li>
+</ul>
+<pre><code class="language-Html">    &lt;!--评论显示区，请插入合适的位置--&gt;
+    &lt;div id=&quot;comment&quot;&gt;&lt;/div&gt;
+    &lt;!--Leancloud 操作库:--&gt;
+    &lt;script src=&quot;//cdn1.lncld.net/static/js/3.6.1/av-min.js&quot;&gt;&lt;/script&gt;
+    &lt;!--Valine 的核心代码库--&gt;
+    &lt;script src=&quot;//cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        new Valine({
+            el:'#comment',
+            appId: 'AppID',
+            appKey: 'AppKey',
+            placeholder: 'ヾﾉ≧∀≦)o快来评论一下吧!',
+            avatar:''
+        });
+    &lt;/script&gt;
+</code></pre>
+<ol start="4">
+<li>打开Gridea的评论<br>
+<img src="https://blog.520wx.top/post-images/1678412322657.png" alt="" loading="lazy"></li>
+</ol>
+<h1 id="总结">总结</h1>
+<ul>
+<li>一套流程下来也折腾了快一天时间，主要是Gridea的官方上手教程不太详细，网上的教程又太古老</li>
+<li>可以把Gridea的保存路径存放在onedriver的同步文件夹，可以多设备同步</li>
+<li><code>重点</code>如果设置自定义域名出现问题，比如<strong>样式加载不出来</strong>，官方给的回答是http和https不匹配的原因，在我实际操作中发现应该是域名那里填写自己的域名而不是像官方教程里写的填写github的仓库地址，因为你写仓库地址而github已经使用了你的域名，所以样式和图片都无法读取到。这里至少卡了我2个小时。</li>
+</ul>
+
+<span id="footnote"></span>
+<div id = "warn"></div>
+</div>
+<div class="toc-container"><ul class="markdownIt-TOC">
+<li><a href="#%E6%90%AD%E5%BB%BA%E5%8E%9F%E5%9B%A0">搭建原因</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E6%AD%A4%E7%AF%87%E6%96%87%E7%AB%A0">关于此篇文章</a></li>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#github">Github</a></li>
+<li><a href="#gridea">Gridea</a></li>
+<li><a href="#cloudflare">cloudflare</a></li>
+<li><a href="#valine%E8%AF%84%E8%AE%BA">Valine评论</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</div>
+</div>
+<div id="fullPage"><canvas id="canvas"></canvas></div>
+</article>
+<div id="eof"><span>EOF</span></div><div class="round-shape-one"></div>
+<section>
+<div class="doc_comments">
+
+	  
+		<div id="gitalk-container"></div>
+		<!--评论显示区，请插入合适的位置-->
+<div id="comment"></div>
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.6.1/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el:'#comment',
+        appId: 'KRMHcfIBjp92IDbL9MSOONWV-gzGzoHsz',
+        appKey: 'Jygkpr1ppxyVfDsKacoQvoB7',
+        placeholder: 'ヾﾉ≧∀≦)o快来评论一下吧!',
+        avatar:''
+    });
+</script>
+
+	  
+		  
+	  
+
+</div></section>
+</div></div></div><script>
+"use strict";!function(){for(var n=document.getElementsByTagName("pre"),e=n.length,s=0;s<e;s++){n[s].innerHTML='<span class="line-number"></span>'+n[s].innerHTML+'<span class="cl"></span>';for(var a=n[s].innerHTML.split(/\n/).length,r=0;r<a-1;r++){n[s].getElementsByTagName("span")[0].innerHTML+="<span>"+(r+1)+"</span>"}}}();
+let mainNavLinks=document.querySelectorAll(".markdownIt-TOC a");window.addEventListener("scroll",event=>{let fromTop=window.scrollY;mainNavLinks.forEach((link,index)=>{let section=document.getElementById(decodeURI(link.hash).substring(1));let nextSection=null
+if(mainNavLinks[index+1]){nextSection=document.getElementById(decodeURI(mainNavLinks[index+1].hash).substring(1));}
+if(section.offsetTop<=fromTop){if(nextSection){if(nextSection.offsetTop>fromTop){link.classList.add("currentToc");}else{link.classList.remove("currentToc");}}else{link.classList.add("currentToc");}}else{link.classList.remove("currentToc");}});});
+var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector(".progress"),scroll;document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;progress.style.setProperty("--scroll",scroll+"%")});
+var wxScale=new WxScale({fullPage:document.querySelector("#fullPage"),canvas:document.querySelector("#canvas")});var imgBox=document.querySelectorAll("#md_block img");for(var i=0;i<imgBox.length;i++){imgBox[i].onclick=function(e){wxScale.start(this)}};
+</script>
+<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a><div class="footer animated fadeInDown"><div class="site_footer"><div class="mysocials"><div class="my_socials"></div></div><div class="copyright"id="copyright">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Copyright © 2018-2023 <a href="https://blog.520wx.top" style="margin:0;">Gridea</a>.</div>
+<span style="display: inline;margin-right:15px;">👁<strong><span id="busuanzi_value_site_uv"></span></strong></span><span id="busuanzi_container_page_pv" style="display: inline;"><span>📚<strong>3</strong> posts</span></div></div>
+<script>
+console.log("\n %c \u26a1Theme: Bitcron-pro Author's Blog:https://blog.blinkstar.cn  Writen By Serence  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;", );
+</script>
+<script src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js" type="module" defer></script>
+<script type="text/javascript" async src="https://blog.520wx.top/media/js/prism.js"></script>
+</body>
+</html>
